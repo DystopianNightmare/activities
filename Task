@@ -1,0 +1,81 @@
+
+public class Task implements Comparable<Task> {
+
+	private String description;
+	private int priority;
+	private boolean complete;
+	
+	
+	public Task(String description) {
+		this.description = description;
+		priority = 0;
+		complete =  true;
+	}
+	
+	public Task(String description, int priority) {
+		this.description = description;
+		this.priority = priority;
+		complete =  false;
+	}
+	
+	public String toString() {
+		if (complete) {
+			return ("[X]" + description + " , " + priority) ;
+			
+		} return "[]" + description + " , " + priority;
+	}
+	
+	//activity 15
+	
+	//equals method
+	public boolean equals(Task otherTask) {
+		if (this.description.equalsIgnoreCase(otherTask.getDescription())) {
+			return true;
+		}
+		return false;
+	}
+	//compare to
+	public int compareTo(Task otherTask) {
+		if(this.isComplete() == otherTask.isComplete()) {
+			if(this.priority == otherTask.getPriority()) {
+				return 0;
+			}
+			if(this.priority < otherTask.getPriority()) { 
+				return-1;
+			}
+			if(this.priority > otherTask.getPriority()) { 
+				return 1;
+			}
+			
+		} else if (this.isComplete() == true && otherTask.isComplete() == false) {
+			return -1;
+	
+		}			
+		return 1;
+		
+		
+	}
+	
+	
+	
+	
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getPriority() {
+		return priority;
+	}
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+	public boolean isComplete() {
+		return complete;
+	}
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+}
