@@ -1,0 +1,55 @@
+
+public class TaskManager {
+
+	
+	
+	public static void main(String[] args) {
+		
+		Task task1 = new Task("Finish Activity 14");
+		System.out.println("task 1");
+		System.out.println(task1);
+		//task1.setComplete(false);
+		
+		System.out.println("task 1 is complete: " + task1.isComplete());
+		System.out.println(task1);
+		
+		Task task2 = new Task("Give Tigger a bath", 10);
+		System.out.println();
+		System.out.println("task 2");
+		System.out.println(task2);
+		task2.setPriority(20);
+		System.out.println("task2 priority is: " + task2.getPriority());
+		System.out.println(task2);
+
+		//Activity 15
+		Task task3 = new Task("Finish Activity 14");
+		if (task3.equals(task1)) {
+			System.out.println("Task3 and Task 1 are equal");
+		} else {
+			System.out.println("They are not equal");
+		}
+		
+		
+		System.out.println("\nchecking if task1 and task 2 are equal");
+		if (task1.compareTo(task2) == -1) {
+			System.out.println("task 1 is less important than the task2");
+		}
+		 if (task1.compareTo(task2) == 0) {
+			System.out.println("task 1 is equal to the task2");
+		}
+		 if (task1.compareTo(task2) == 1) {
+				System.out.println("task 1 more important than task2");
+}
+		 System.out.println("\nchecking if task1 and task 3 are equal");
+			if (task1.compareTo(task3) == -1) {
+				System.out.println("task 1 is less important than the task3");
+			}
+			 if (task1.compareTo(task3) == 0) {
+				System.out.println("task 1 is equal to the task3");
+			}
+			 if (task1.compareTo(task3) == 1) {
+					System.out.println("task  more important than task3");
+	}
+		 
+}
+}
