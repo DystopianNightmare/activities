@@ -1,19 +1,22 @@
 
+
 public class TaskManager {
 
 	
 	
 	public static void main(String[] args) {
 		
-		Task task1 = new Task("Finish Activity 14");
+		Task task1 = new Task("Finish Activity");
+		task1.setPriority(15);
 		System.out.println("task 1");
 		System.out.println(task1);
-		//task1.setComplete(false);
+		task1.setComplete(true);
 		
 		System.out.println("task 1 is complete: " + task1.isComplete());
 		System.out.println(task1);
 		
 		Task task2 = new Task("Give Tigger a bath", 10);
+		task2.setComplete(false);
 		System.out.println();
 		System.out.println("task 2");
 		System.out.println(task2);
@@ -22,7 +25,8 @@ public class TaskManager {
 		System.out.println(task2);
 
 		//Activity 15
-		Task task3 = new Task("Finish Activity 14");
+		Task task3 = new Task("Finish Activity");
+		task3.setComplete(false);
 		if (task3.equals(task1)) {
 			System.out.println("Task3 and Task 1 are equal");
 		} else {
@@ -51,5 +55,44 @@ public class TaskManager {
 					System.out.println("task  more important than task3");
 	}
 		 
+			 // activity 16
+			 ToDoList todo = new ToDoList("g");
+			 
+			 todo.addTask(task1);
+			 todo.addTask(task2);
+			 todo.addTask(task3);
+			 todo.addTask("description");
+			 
+			 task1.setCategory(Task.Category.WORK);
+			 task2.setCategory(Task.Category.PERSONAL);
+			 task3.setCategory(Task.Category.WORK);
+			 
+			 			 
+			 System.out.println(todo.toString());
+			 
+			 //get work 
+			 System.out.println("next work");
+			 System.out.println(todo.getWork());
+			 
+			 System.out.println();
+			 System.out.println("checks if task1 equals task 3");
+			 System.out.println(task1.equals(task3));
+			 
+			 System.out.println();
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
 }
 }
