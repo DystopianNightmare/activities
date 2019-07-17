@@ -1,0 +1,38 @@
+import java.awt.BorderLayout;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class ToDoListPanel extends JPanel {
+
+	private ToDoList list;
+	private JLabel label;
+	private Task task;
+	private TaskButton button;
+
+	public  ToDoListPanel(String name) {
+
+		list = new ToDoList(name);
+		label = new JLabel(name);
+		add(label);
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+	} 
+	public void addTask(Task t) {
+		list.addTask(t);
+		this.button = new TaskButton(t);
+		add(button); 
+		revalidate();
+	}
+	public void showWorkDialog() {
+		task = list.getWork();
+		if (task == null) {
+			JOptionPane.showMessageDialog(null, "There is no work left"); 		
+		} else {
+			JOptionPane.showMessageDialog(null, "you should do " + task); 	
+		}
+
+	}
+}
