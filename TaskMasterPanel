@@ -1,0 +1,88 @@
+import javax.swing.*;
+
+
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+ * Lesson 18-19: Activity - Task Master GUI
+ * 
+ * This class represents the main TaskMaster JPanel. 
+ * 
+ * It contains a ToDoListPanel and the control sub-panel.
+ * 
+ * @author CS121 Instructors
+ * @version [semester]
+ * @author [your name]
+ */
+@SuppressWarnings("serial")
+public class TaskMasterPanel extends JPanel {
+	private TaskButton button;
+	private JButton getWorkButton, addTaskButton;
+	private Task task;
+	private ToDoListPanel listPanel;
+	private JPanel controlPanel;
+	JTextField description = new JTextField(15);
+	JScrollPane toDoListScrollPane; 
+	/**
+	 * Creates a new TaskMasterPanel.
+	 */
+	public TaskMasterPanel()
+	{
+
+
+		this.setLayout(new BorderLayout());
+		listPanel = new ToDoListPanel("My TODO List");
+		listPanel.addTask(new Task("Task 1"));
+		listPanel.addTask(new Task("Task 2"));
+		listPanel.addTask(new Task("Task 3"));
+
+
+
+		controlPanel = new JPanel();
+		add(controlPanel, BorderLayout.SOUTH);
+
+		getWorkButton = new JButton("Get Work");
+		addTaskButton = new JButton("Add Task");
+
+
+		getWorkButton.addActionListener(new GetWorkButtonListener());
+		addTaskButton.addActionListener(new AddTaskButtonListener());
+		description.addActionListener(new AddTaskButtonListener());
+
+		controlPanel.add(description);
+		controlPanel.add(addTaskButton);
+		controlPanel.add(getWorkButton);
+
+		toDoListScrollPane = new JScrollPane(listPanel);
+		toDoListScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		toDoListScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		add(toDoListScrollPane, BorderLayout.CENTER);
+
+		this.setPreferredSize(new Dimension(500, 400));		
+
+	}
+	private class GetWorkButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			listPanel.showWorkDialog();
+		}
+	}
+	private class AddTaskButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String a = description.getText();
+			Task b = new Task(a);
+			listPanel.addTask(b);
+
+		}
+
+	}
+
+
+}
