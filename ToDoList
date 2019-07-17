@@ -55,11 +55,12 @@ public class ToDoList implements ToDoListInterface {
 	 * @return the next task or null if there are no tasks in the list or if all the tasks are complete.
 	 */
 	public Task getWork() {
+		
+		Task highPriority = Collections.max(taskArray);
 		if (taskArray.isEmpty()) {
 			return null;
 		}
-		Task highPriority = Collections.max(taskArray);
-		if (!highPriority.isComplete() ){
+		else if (!highPriority.isComplete() ){
 			return highPriority;
 		} else {
 			return null;
